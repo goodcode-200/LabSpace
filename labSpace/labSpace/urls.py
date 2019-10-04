@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
+from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$',views.home,name='home'),
+    url(r'^forum/',include('forum.urls')),
+    url(r'^user/',include('user.urls')),
+    url(r'^group/',include('group.urls')),
 ]
