@@ -1,0 +1,72 @@
+{% extends 'forum/home.html' %}
+
+{% block forum_content %}
+	{% for item in titles %}
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">{{item.title}}</h3>
+		</div>
+	  	<div class="panel-body">
+	    	{{item.content}}
+	  	</div>
+	</div>
+	{% empty %}
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">---暂无发布的主题，敬请期待---</h3>
+		</div>
+	  	<div class="panel-body">
+	    	NULL
+	  	</div>
+	</div>
+	{% endfor %}
+
+    <!-- 这几个面板被注释
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+		    <h3 class="panel-title">玩转Apache</h3>
+		</div>
+	  	<div class="panel-body">
+	    	Panel content
+	  	</div>
+	</div>
+
+	<div class="panel panel-success">
+		<div class="panel-heading">
+		    <h3 class="panel-title">C++内存管理</h3>
+		</div>
+	  	<div class="panel-body">
+	    	Panel content
+	  	</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		    <h3 class="panel-title">MatLab实践</h3>
+		</div>
+	  	<div class="panel-body">
+	    	Panel content
+	  	</div>
+	</div>
+
+	<div class="panel panel-warning">
+		<div class="panel-heading">
+		    <h3 class="panel-title">SpringBoot源码感悟</h3>
+		</div>
+	  	<div class="panel-body">
+	    	Panel content
+	  	</div>
+	</div>
+
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+		    <h3 class="panel-title">python装饰器的理解</h3>
+		</div>
+	  	<div class="panel-body">
+	    	Panel content
+	  	</div>
+	</div>
+	-->
+{% endblock %}
+
+		

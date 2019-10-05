@@ -1,0 +1,23 @@
+{% extends 'forum/home.html' %}
+
+{% block forum_content %}
+	{% for item in titles %}
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">{{item.title}}</h3>
+		</div>
+	  	<div class="panel-body">
+	    	{{item.content}}
+	  	</div>
+	</div>
+	{% empty %}
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+		    <h3 class="panel-title">~~~您的查询无结果,换个关键词吧~~~</h3>
+		</div>
+	  	<div class="panel-body">
+	    	NULL
+	  	</div>
+	</div>
+	{% endfor %}
+{% endblock %}
