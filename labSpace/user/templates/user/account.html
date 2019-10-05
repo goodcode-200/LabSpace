@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>登录注册</title>
+	<!-- For-Mobile-Apps-and-Meta-Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //For-Mobile-Apps-and-Meta-Tags -->
+
+	<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/static/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>用户登录注册</h1>
+	<section>
+	  <div class="controls w3l">
+	    <div class="cbcontrol" id="cbControlRight"><</div>
+	    <div class="cbcontrol" id="cbControlLeft">></div>
+	    <div class="clear"></div>
+	  </div>
+	  <div class="stage">
+	   
+	    <div class="cbImage w3">
+			<h3>Recover Form</h3>
+			<form action="#" method="post">
+				<input type="text" class="email" name="email" placeholder="Email" required="">
+				<input type="text" class="number" name="phone number" placeholder="Phone Number" required="">
+				{% csrf_token %}
+				<input type="submit" class="done" value="Done">
+			</form>
+			<a href="#" class="rterms">Terms and Conditions</a>
+		</div>
+	    <div class="cbImage active signin agileits">
+			<h3>登录</h3>
+			<form action="{% url 'user:login' %}" method="post">
+				<input type="text" name="Name" class="name" placeholder="Username" required="">
+				<input type="password" name="password" class="password" placeholder="Password" required="">
+				<input type="submit" value="Sign In">
+				{% csrf_token %}
+				<ul class="bottom">
+					<li><a href="#" class="forgot">忘记密码?</a></li>
+					<li><a href="#" class="terms">Terms and Conditions</a></li>
+				</ul>
+			</form>
+		</div>
+	    <div class="cbImage agileinfo">
+			<h3>注册</h3>
+			<form action="{% url 'user:register' %}" method="post">
+				{% csrf_token %}
+				<input type="text" class="name" name="username" placeholder="Username" required="">
+				<input type="password" class="password" name="password" placeholder="Password" required="">
+				<input type="password" class="password" name="confirm password" placeholder="Confirm Password" required="">
+				<input checked type="radio" name="gender" value='0'>男
+            	<input type="radio" name="gender" value='1'>女
+				<input type="text" class="email" name="email" placeholder="Email" required="">
+				<input type="submit" value="Sign Up">
+			</form>
+		</div>
+	    <div class="clear"></div>
+	  </div>
+	  <div class="clear"></div>
+	  <div class="footer">
+	  <p>LabSpace,为实验室高效学习助力</p>
+	  </div>
+	</section>
+	<script src="/static/js/jquery-2.1.4.min.js"></script> 
+	<script src="/static/js/coverflow-slideshow.js"></script>
+	<div style="text-align:center;">
+	</div>
+	</body>
+</html>

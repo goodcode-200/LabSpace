@@ -22,7 +22,7 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.home,name='home'),
-    url(r'^forum/',include('forum.urls')),
-    url(r'^user/',include('user.urls')),
-    url(r'^group/',include('group.urls')),
+    url(r'^forum/',include('forum.urls',namespace='forum')),
+    url(r'^user/',include('user.urls',namespace='user')),
+    url(r'^group/',include('group.urls',namespace='group')),
 ]
