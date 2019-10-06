@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -37,9 +37,9 @@ def register(request):
 		userprofile.save()
 		return HttpResponse("注册成功")
 	else:
-		return
+		return HttpResponseRedirect("/user/account")
 
-def login(request):
+def userLogin(request):
 	if request.method == "POST":
 		name = request.POST.get('Name').strip()
 		password = request.POST.get('password')
@@ -47,11 +47,11 @@ def login(request):
 		if user:
 			if user.is_active:
 				#request.session["username"] = user.username
-				# login(request,user)
+				login(request,user)
 				return HttpResponse("登录成功")
 			else:
 				return HttpResponse("您的用户已经被限制,请联系工作人员")
 		else:
 			return HttpResponse("登录失败，用户名或密码错误！")
 	else:
-		return
+		return HttpResponseRedirect("/user/account")
