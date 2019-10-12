@@ -13,7 +13,7 @@ class Tag(models.Model):
 class Title(models.Model):
     title = models.CharField("题目",max_length=30,null=False)
     content = models.TextField("内容",max_length=1000,null=False)
-    userprofile = models.ForeignKey(UserProfile)
+    userprofile = models.ForeignKey(UserProfile,null=False)
     pub_time = models.DateTimeField("发布时间",default=timezone.now)
     tags = models.ManyToManyField(Tag)
     comment_num = models.IntegerField("评论数量",default=0)
@@ -24,10 +24,10 @@ class Title(models.Model):
         verbose_name_plural = '论坛主题'
 
 class Comment(models.Model):
-    userprofile = models.ForeignKey(UserProfile)
+    userprofile = models.ForeignKey(UserProfile,null=False)
     pub_time = models.DateTimeField("发布时间",default=timezone.now)
-    title = models.ForeignKey(Title)
-    content = models.CharField("评论内容",max_length=250)
+    title = models.ForeignKey(Title,null=False)
+    content = models.CharField("评论内容",max_length=250,null=False)
     like_num = models.IntegerField("点赞数",default=0)
     #  recomments = models.ForeignKey() 评论的评论，先不实现
     class Meta:

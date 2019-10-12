@@ -24,4 +24,4 @@ class DirectionAdmin(admin.ModelAdmin):
 
 @admin.register(Honor)
 class HonorAdmin(admin.ModelAdmin):
-	list_display = ('id','h_name','get_time','direction')
+	list_display = ('id','h_name','get_time','lab','direction')

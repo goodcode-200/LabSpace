@@ -40,7 +40,7 @@ class MajorTag(models.Model):
 
 class Direction(models.Model):
     d_name = models.CharField("研究方向",max_length=20)
-    leader = models.ForeignKey(UserProfile)
+    leader = models.ForeignKey(UserProfile,on_delete=models.SET_NULL,null=True)
     lab = models.ForeignKey(LabDetail)
     major_tags = models.ManyToManyField(MajorTag)
     def __str__(self):
@@ -51,7 +51,8 @@ class Direction(models.Model):
 class Honor(models.Model):
     h_name = models.CharField("荣誉名字",max_length=30)
     get_time = models.DateField("获得时间")
-    direction = models.ForeignKey(Direction)
+    lab = models.ForeignKey(LabDetail,default=23333) #23333大笑，实验室嘞，憨货？
+    direction = models.ForeignKey(Direction,on_delete=models.SET_DEFAULT,default="对应方向已不在")
     owers = models.ManyToManyField(UserProfile)
     def __str__(self):
         return self.h_name
