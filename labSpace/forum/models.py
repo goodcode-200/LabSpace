@@ -15,7 +15,7 @@ class Title(models.Model):
     content = models.TextField("内容",max_length=1000,null=False)
     userprofile = models.ForeignKey(UserProfile)
     pub_time = models.DateTimeField("发布时间",default=timezone.now)
-    tags = models.ManyToManyField(Tag,null=True)
+    tags = models.ManyToManyField(Tag)
     comment_num = models.IntegerField("评论数量",default=0)
     like_num = models.IntegerField("点赞数量",default=0)
     def __str__(self):
