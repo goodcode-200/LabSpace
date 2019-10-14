@@ -48,15 +48,16 @@
 		</div>
 	    <div class="cbImage agileinfo">
 			<h3>注册</h3>
-			<form action="{% url 'user:register' %}" method="post">
+			<form action="{% url 'user:register' %}" method="post" name = "myForm">
 				{% csrf_token %}
-				<input type="text" class="name" name="username" placeholder="Username" required="">
-				<input type="password" class="password" name="password" placeholder="Password" required="">
-				<input type="password" class="password" name="confirm password" placeholder="Confirm Password" required="">
-				<input checked type="radio" name="gender" value='0'>男
-            	<input type="radio" name="gender" value='1'>女
-				<input type="text" class="email" name="email" placeholder="Email" required="">
-				<input type="submit" value="Sign Up">
+                <ul class="registerForm">
+                    <li><input type="text" class="name" name="username" placeholder="Username" required=""></li>
+                    <li><input type="password" class="password" name="password" placeholder="Password" required=""></li>
+                    <li><input type="password" class="password" name="confirm_password" placeholder="Confirm Password" required=""></li>
+                    <li class="gender"><input checked type="radio" name="gender" value='0'>男<input type="radio" name="gender" value='1'>女</li>
+                    <li><input type="text" class="email" name="email" placeholder="Email" required=""></li>
+                    <li><input type="submit" value="Sign Up" onclick = "submitForm(this.form)" id="submit_register"></li>
+                </ul>
 			</form>
 		</div>
 	    <div class="clear"></div>
@@ -71,4 +72,61 @@
 	<div style="text-align:center;">
 	</div>
 	</body>
+<script>
+
+	window.alert = function(str)
+	{
+		var shield = document.createElement("DIV");
+		shield.id = "shield";
+		shield.style.position = "absolute";
+		shield.style.left = "0px";
+		shield.style.top = "0px";
+		shield.style.width = "100%";
+		shield.style.height = document.body.scrollHeight+"px";
+		//弹出对话框时的背景颜色
+		shield.style.background = "rgb(0,0,0,0.4)";
+		shield.style.textAlign = "center";
+		shield.style.zIndex = "25";
+
+		var alertFram = document.createElement("DIV");
+		alertFram.id="alertFram";
+		alertFram.style.position = "absolute";
+		alertFram.style.left = "50%";
+		alertFram.style.top = "70%";
+		alertFram.style.marginLeft = "-225px";
+		alertFram.style.marginTop = "-75px";
+		alertFram.style.width = "450px";
+		alertFram.style.height = "150px";
+		alertFram.style.background = "black";
+		alertFram.style.textAlign = "center";
+		alertFram.style.lineHeight = "150px";
+		alertFram.style.zIndex = "300";
+		strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+		strHtml += " <li style=\"background:#fff;text-align:center;font-size:16px;line-height:120px;border-left:1px solid #F9CADE;border-right:1px solid black;\">"+str+"</li>\n";
+		strHtml += " <li style=\"background:#fff;text-align:center;font-weight:bold;height:25px;line-height:25px;\"><input style=\"border:1px solid rgba(0,0,0,.2);border-radius: .3em;\" type=\"button\" value=\"确 定\" onclick=\"doOk()\" /></li>\n";
+		strHtml += "</ul>\n";
+		alertFram.innerHTML = strHtml;
+		document.body.appendChild(alertFram);
+		document.body.appendChild(shield);
+		this.doOk = function(){
+			alertFram.style.display = "none";
+			shield.style.display = "none";
+		}
+		alertFram.focus();
+		document.body.onselectstart = function(){return false;};
+	}
+	function submitForm(myForm){
+		console.log("132");
+		console.log(myForm.password.value+"   "+myForm.confirm_password.value);
+		var sub = document.getElementById(submit_register);
+		if(myForm.password.value!=myForm.confirm_password.value)
+		{
+			alert("两次密码输入不一致！");
+			myForm.confirm_password.focus();
+			sub.type = "button";
+			return false;
+		}
+	}
+
+</script>
 </html>
