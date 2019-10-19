@@ -15,8 +15,9 @@ class LabGroup(models.Model):
         verbose_name_plural = '用户群组'
 
 class LabDetail(models.Model):
-    lab = models.ForeignKey(LabGroup)
+    lab = models.OneToOneField(LabGroup)
     desc = models.TextField("团体描述", max_length=3000, default="该团体很懒，暂时没有介绍呢~~")
+    logo = models.ImageField(upload_to="LabLogo/%Y/%m/%d", default="default/default.png")
     class Meta:
         verbose_name_plural = '实验室详情'
 

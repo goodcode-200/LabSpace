@@ -23,14 +23,16 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <a href="{% url 'group:detail' item.pk %}">
+                                <a href="{% url 'group:detail' item.lab.pk %}">
                                     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
-                                {{item.group}}
+                                {{item.lab}}
                                 </a>
                             </h3>
                         </div>
                         <div class="panel-body">
-                            {{item.desc}}
+                            <img src="/media/{{ item.logo }}" height="80%" width="80%"/>
+                            <br/>
+                            {{ item.desc }}
                         </div>
                     </div>
                 </div>

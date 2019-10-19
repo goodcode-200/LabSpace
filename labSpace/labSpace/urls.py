@@ -18,6 +18,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 from django.views.generic.base import RedirectView
+import django.views.static
+from .settings import MEDIA_ROOT as m_root
 from . import views
 
 urlpatterns = [
@@ -27,4 +29,5 @@ urlpatterns = [
     url(r'^user/',include('user.urls',namespace='user')),
     url(r'^group/',include('group.urls',namespace='group')),
     url(r'^favicon\.ico$',RedirectView.as_view(url=r'static/images/favicon.ico')),
+    url(r'^media/(?P<path>.*)',django.views.static.serve,{'document_root':m_root}),
 ]
