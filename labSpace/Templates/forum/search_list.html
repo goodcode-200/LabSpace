@@ -1,5 +1,9 @@
 {% extends 'forum/home.html' %}
 
+{% block head %}
+    <title>主题查询</title>
+{% endblock %}
+
 {% block forum_content %}
 	{% for item in titles %}
 	<div class="panel panel-default">

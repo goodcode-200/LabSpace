@@ -1,5 +1,9 @@
 {% extends 'forum/home.html' %}
 
+{% block head %}
+    <title>论坛主题列表</title>
+{% endblock %}
+
 {% block forum_content %}
 	{% for item in titles %}
 	<div class="panel panel-default">
@@ -68,5 +72,7 @@
 	</div>
 	-->
 {% endblock %}
+
+{% block home_a %}active{% endblock %}
 
 		

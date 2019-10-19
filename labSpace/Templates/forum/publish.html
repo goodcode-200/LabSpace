@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+{% extends 'forum/home.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+{% block head %}
     <title>发布主题</title>
 
     <!-- 引入UEditor富文本编辑器 -->
@@ -13,9 +12,11 @@
         var ue = UE.getEditor('container');
     </script>
     <!-- end 引入 -->
-</head>
-<body>
+{% endblock %}
+
+{% block forum_content %}
     <div>
+        <h1>{{ user }},您已登录,请发布您的主题~~</h1>
         <form action="{% url 'forum:publish' %}" method="POST">
             {% csrf_token %}
             <span>主题：</span>
@@ -26,10 +27,11 @@
             </script>
             </br>
             <span>增加标签(多个标签之间用斜杠’/‘分隔): </span>
-            <input type="text" name="tags">
-            </hr>
-            <input type='submit' value='发布（publish）'>
+            <input type="text" name="tags" required="">
+
+            <input type='submit' value='发布（publish）' >
         </form>
     </div>
-</body>
-</html>
+{% endblock %}
+
+{% block publish_a %}active{% endblock %}

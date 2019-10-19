@@ -55,4 +55,5 @@ def publish(request):
     else:
         context = {}
         user = request.user
+        context["user"] = user
         return render(request,'forum/publish.html',context)
