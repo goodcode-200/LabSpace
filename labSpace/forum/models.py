@@ -20,6 +20,8 @@ class Title(models.Model):
     like_num = models.IntegerField("点赞数量",default=0)
     def __str__(self):
         return self.title
+    def show_tags(self):  #构造生成器，展示一个title对象的多对多关系-->tag
+        return (i.tag_name for i in self.tags.all())
     class Meta:
         verbose_name_plural = '论坛主题'
 

@@ -8,7 +8,16 @@
 	{% for item in titles %}
 	<div class="panel panel-default">
 	  	<div class="panel-heading">
-		    <h3 class="panel-title">{{item.title}}</h3>
+		    <h3 class="panel-title" style="display:inline">{{item.title}}&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+
+            <!-- 展示标签 -->
+            <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+            {% for tag in item.show_tags %}
+                <span>{{ tag }}</span>
+            {% empty %}
+                <span>无标签</span>
+            {% endfor %}
+            <!-- end展示标签 -->
 		</div>
 	  	<div class="panel-body">
 	    	{{item.content|safe}}
