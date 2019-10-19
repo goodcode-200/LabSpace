@@ -1,0 +1,13 @@
+{% extends 'forum/home.html' %}
+
+{% block head %}
+    <title>标签:{{ tag }}</title>
+{% endblock %}
+
+{% block forum_content_head %}
+    <h3>标签-->{{ tag }}:</h3>
+{% endblock %}
+
+{% block empty_remind %}
+    该标签下无主题发布~_~
+{% endblock %}

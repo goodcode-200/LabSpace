@@ -15,7 +15,7 @@ def home(request):
 @login_required(login_url="/user/account/")  #登录核验
 def search(request): #模糊查询(涵盖主题的title和标签)
     if request.method == "POST":
-        key = request.POST.get('key')
+        key = request.POST.get('key').strip()
         context = {}
         titles = Title.objects.filter(title__icontains=key)
         tags = Tag.objects.filter(tag_name__icontains=key)
@@ -23,6 +23,7 @@ def search(request): #模糊查询(涵盖主题的title和标签)
             titles = chain(titles,tag_obj.title_set.all())
         titles = list(set(titles))  #去重
         context["titles"] = titles
+        context["key"] = key
         return render(request,'forum/search_list.html',context)
     else:
         return HttpResponseRedirect("/forum/")
@@ -57,3 +58,11 @@ def publish(request):
         user = request.user
         context["user"] = user
         return render(request,'forum/publish.html',context)
+
+def tagInfo(request,tag_pk):
+    context = {}
+    tag = Tag.objects.get(pk=tag_pk)
+    titles = tag.title_set.all()
+    context["titles"] = titles
+    context["tag"] = tag.tag_name
+    return render(request,'forum/taginfo.html',context)

@@ -25,18 +25,99 @@
 
 			<form class="navbar-form navbar-left" action="{% url 'forum:search' %}" method="POST">
 		        <div class="form-group">
-		          	<input type="text" class="form-control" name="key" value="查询主题(find)">
+		          	<input style="{% block find_active %}{% endblock %}"
+                           value="{% block find_key %}{% endblock %}"
+                           type="text" class="form-control" name="key" placeholder="查询主题(find)">
 		        </div>
 		        {% csrf_token %}
 		        <button type="submit" class="btn btn-default">Submit</button>
 	      	</form>
 		</ul>
 		<!-- end导航栏 -->
-		{% block forum_content %}
+
+        <!-- 给内容加个标题 块 -->
+		{% block forum_content_head %}
 		{% endblock %}
+        <!-- end 块 -->
 
 		<!-- 内容面板 -->
-		
+		{% for item in titles %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="display:inline">{{item.title}}&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+
+                <!-- 展示标签 -->
+                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                {% for tag in item.show_tags %}
+                    <a href="{% url 'forum:taginfo' tag.pk %}">
+                        <span>{{ tag }}</span>
+                    </a>
+                {% empty %}
+                    <span>无标签</span>
+                {% endfor %}
+                <!-- end展示标签 -->
+            </div>
+            <div class="panel-body">
+                {{item.content|safe}}
+            </div>
+        </div>
+        {% empty %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% block empty_remind %}{% endblock %}</h3>
+            </div>
+            <div class="panel-body">
+                NULL
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- 这几个面板被注释 可选
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">玩转Apache</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">C++内存管理</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">MatLab实践</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">SpringBoot源码感悟</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h3 class="panel-title">python装饰器的理解</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+        -->
 		<!-- end内容面板 -->
 
 	</body>
