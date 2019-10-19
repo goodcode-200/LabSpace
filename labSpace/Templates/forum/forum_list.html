@@ -7,7 +7,7 @@
 		    <h3 class="panel-title">{{item.title}}</h3>
 		</div>
 	  	<div class="panel-body">
-	    	{{item.content}}
+	    	{{item.content|safe}}
 	  	</div>
 	</div>
 	{% empty %}
