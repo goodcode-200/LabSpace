@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from .models import Title,Tag
 from user.models import UserProfile
 from itertools import chain
+from .utils import get_next_obj,get_pre_obj
 
 def home(request):
     context = {}
@@ -66,3 +67,10 @@ def tagInfo(request,tag_pk):
     context["titles"] = titles
     context["tag"] = tag.tag_name
     return render(request,'forum/taginfo.html',context)
+
+def detail(request,title_pk):
+    context = {}
+    context["title"] = Title.objects.get(pk=title_pk)
+    context["pre"] = get_pre_obj(int(title_pk))
+    context["next"] = get_next_obj(int(title_pk))
+    return render(request,'forum/detail.html',context)

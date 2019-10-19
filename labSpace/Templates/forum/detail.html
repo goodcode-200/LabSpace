@@ -1,0 +1,64 @@
+{% extends 'forum/pure_bar.html' %}
+
+{% block head %}
+    <title>主题详情</title>
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+    <div class='row'>
+        <div class='col-xs-10 col-xs-offset-1' style="border: 1px solid #AFEEEE; padding:20px; padding: 30px;" >
+
+            <table >
+                <tr bgcolor="#F0F8FF" align="center">
+                    <td colspan="2"><h3>{{title.title}}</h3></td><tr />
+                </tr>
+                <tr>
+                    <td>作者:{{ title.userprofile }}&nbsp;&nbsp;</td>
+                    <td>发布时间:{{ title.pub_time }}&nbsp;&nbsp;</td>
+                    <td>
+                        <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                        {% for tag in title.show_tags %}
+                            <a href="{% url 'forum:taginfo' tag.pk %}">
+                                <span>{{ tag }}</span>
+                            </a>
+                        {% empty %}
+                            <span>无标签</span>
+                        {% endfor %}
+                        &nbsp;&nbsp;
+                    </td>
+                    <td>评论数:{{ title.comment_num }}&nbsp;&nbsp;</td>
+                    <td>点赞数:{{ title.like_num }}</td>
+                </tr>
+                <tr  >
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p style="text-indent: 2em; word-spacing: 0.5em; font-family: 宋体;">
+                        {{title.content|safe}}</p></td>
+                </tr>
+
+                <tr  >
+                    <td colspan="2">
+                    </td>
+                    <p>
+                        {% if pre %}
+                            上一主题：<a href="{% url 'forum:detail' pre.pk %}">{{pre.title}}</a><br>
+                        {% else %}
+                            上一主题：没有了<br>
+                        {% endif %}
+
+                        {% if next %}
+                            下一主题：<a href="{% url 'forum:detail' next.pk %}">{{next.title}}</a>
+                        {% else %}
+                            下一主题：没有了
+                        {% endif %}
+                    </p>
+                </tr>
+            </table>
+
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

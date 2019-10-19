@@ -1,10 +1,8 @@
+{% extends 'forum/pure_bar.html'  %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
+{% block head %}
     <title>发布主题</title>
-    <meta charset="UTF-8">
-    <link href="/static/boot/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- 引入UEditor富文本编辑器 -->
     <script type="text/javascript" src="{% static 'UEditor/ueditor.config.js' %}"></script>
@@ -14,30 +12,9 @@
         var ue = UE.getEditor('container');
     </script>
     <!-- end 引入 -->
-</head>
-<body>
-    <!-- 导航栏 -->
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="{% url 'home' %}">LabSpace</a></li>
-        <li role="presentation"><a href="{% url 'forum:home' %}">
-            论坛首页</a></li>
-        <li role="presentation" class="active"><a href="{% url 'forum:publish' %}">
-            发布主题</a></li>
-        <li role="presentation"><a href="#">
-            用户页个人相关</a></li>
-        <li role="presentation"><a href="#">
-            投票</a></li>
+{% endblock %}
 
-        <form class="navbar-form navbar-left" action="{% url 'forum:search' %}" method="POST">
-            <div class="form-group">
-                <input type="text" class="form-control" name="key" placeholder="查询主题(find)">
-            </div>
-            {% csrf_token %}
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-    </ul>
-    <!-- end导航栏 -->
-
+{% block content %}
     <div>
         <h1>{{ user }},您已登录,请发布您的主题~~</h1>
         <form action="{% url 'forum:publish' %}" method="POST">
@@ -55,8 +32,8 @@
             <input type='submit' value='发布（publish）' >
         </form>
     </div>
-</body>
-</html>
+{% endblock %}
+
 
 
 
