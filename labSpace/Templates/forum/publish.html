@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布主题</title>
+
+    <!-- 引入UEditor富文本编辑器 -->
+    <script type="text/javascript" src="{% static 'UEditor/ueditor.config.js' %}"></script>
+    <script type="text/javascript" src="{% static 'UEditor/ueditor.all.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'UEditor/lang/zh-cn/zh-cn.js' %}"></script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
+    <!-- end 引入 -->
+</head>
+<body>
+    <div>
+        <form action="{% url 'forum:publish' %}" method="POST">
+            {% csrf_token %}
+            <span>主题：</span>
+            <input type='text' name='title' required=""><br><br>
+            <span>内容：</span>
+            <script id="container" name="content" type="text/plain" required="">
+            请在此编辑您的主题,点击如下“发布按钮”发布~_~
+            </script>
+            </br>
+            <span>增加标签(多个标签之间用斜杠’/‘分隔): </span>
+            <input type="text" name="tags">
+            </hr>
+            <input type='submit' value='发布（publish）'>
+        </form>
+    </div>
+</body>
+</html>
