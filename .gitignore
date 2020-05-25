@@ -13,7 +13,7 @@
 # 媒体文件
 labSpace/media/
 
-# 配置文件，涉及敏感信息
+# 配置文件，涉及敏感信息，## 找个地方测试
 labSpace/labSpace/settings.py
 
 
