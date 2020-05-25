@@ -14,20 +14,17 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
-from django.conf.urls import include
-from django.views.generic.base import RedirectView
-import django.views.static
-from .settings import MEDIA_ROOT as m_root
 from . import views
-
+from django.views.generic.base import RedirectView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',views.home,name='home'),
-    url(r'^forum/',include('forum.urls',namespace='forum')),
-    url(r'^user/',include('user.urls',namespace='user')),
-    url(r'^group/',include('group.urls',namespace='group')),
-    url(r'^favicon\.ico$',RedirectView.as_view(url=r'static/images/favicon.ico')),
-    url(r'^media/(?P<path>.*)',django.views.static.serve,{'document_root':m_root}),
+    url(r'^index/',views.index),
+    url(r'^$',views.index),
+    url(r'^user/',include("user.urls")),
+    url(r'^blog/',include("blog.urls")),
+    url(r'^lab/',include("lab.urls")),
+    url(r'^forum/',include("forum.urls")),
+    url(r'^favicon.ico$',RedirectView.as_view(url=r'/static/img/favicon.png')),
 ]

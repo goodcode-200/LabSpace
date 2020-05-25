@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>注册页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<link href="/static/reg/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="/static/reg/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+
+</head>
+<body>
+<div class="signupform">
+<h1>欢迎注册labSpace</h1>
+	<div class="container">
+
+		<div class="agile_info">
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h3>Welcome !</h3>
+					<h4>欢迎注册实验室空间Lab.</h4>
+					<p> 实验室成员的集合,实验室的集合,光能的聚变！欢迎进入大家庭！</p>
+					<ul class="social_section_1info">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="w3_pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#" class="w3_vimeo"><i class="fa fa-vimeo"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="w3_info">
+				<h2>Create An Account</h2>
+				<p>Vestibulum est nulla, fermentum eget euismod et, tincidunt at dui dolor sit.</p>
+						<form action="/user/reg_deal" method="post">
+                            {% csrf_token %}
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+							<input type="text" placeholder="昵称" required="" name="nickname" id="nickname">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+							<input type="text" placeholder="真实姓名" required="" name="name" id="name">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input type="text" placeholder="邮箱" required="" name="email" id="email">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+							<input type="Password" placeholder="密码" required="" name="pass" id="pass">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-lock" aria-hidden="true"></i></span>
+							<input type="Password" placeholder="密码确认" required="" name="confi_pass" id="confi_pass">
+						</div>
+							<button class="btn btn-danger btn-block" type="submit" id="submit_button">创建账户</button >
+					</form>
+			</div>
+			<div class="clear"></div>
+			</div>
+
+		</div>
+		<div class="footer">
+
+ <p>Copyright 2019-2020. All Rights Reserved. | made with by labSpace.</p>
+ </div>
+	</div>
+
+    <!-- Javascript -->
+        <script src="/static/js/jquery.min.js" ></script>
+        <!-- 表单验证代码 -->
+        <script src="/static/reg/js/checkForm.js"></script>
+
+	</body>
+</html>

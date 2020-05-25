@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>申请实验室空间</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="" />
+<link href="/static/reg/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="/static/reg/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+
+</head>
+<body>
+<div class="signupform">
+<h1>申请属于你们的实验室空间</h1>
+	<div class="container">
+		<div class="agile_info">
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h3>Welcome !</h3>
+					<h4>如果你是某一个实验室或者学习团体中的负责人，或者你想成为一个学习团队的领袖,欢迎申请实验室空间！</h4>
+					<p> 申请实验室空间需要<span style="color:yellow;">空间码</span>，你可以联系赛格和他的团队(labSpace)申请获得空间码,可发邮件至wxk@datsec.cn或者前往中北大学大数据与网络安全实验室询问！一个空间码只能使用一次，即只申请一个虚拟空间。</p>
+					<ul class="social_section_1info">
+						<li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#" class="w3_pinterest"><i class="fa fa-pinterest"></i></a></li>
+						<li><a href="#" class="w3_vimeo"><i class="fa fa-vimeo"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="w3_info">
+				<h2>Apply A LabSpace</h2>
+				<p>[孔子师郯子、苌弘、师襄、老聃。郯子之徒，其贤不及孔子。孔子曰：“三人行，必有我师]</p>
+						<form action="/lab/apply_deal" method="post">
+                            {% csrf_token %}
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+							<input type="text" placeholder="实验室名称" required="" name="lab_name" id="lab_name">
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <textarea rows="8" cols="30" name="introduce" id="introduce" placeholder="在这里输入你的实验室简介："></textarea>
+						</div>
+						<div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input type="text" placeholder="空间码" required="" name="space_id" id="space_id">
+						</div>
+
+                        <div class="input-group">
+							<span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							<input type="text" placeholder="自定义空间地址如:tencent" required="" name="url_id" id="url_id">
+						</div>
+							<input type="checkbox" value="remember-me" name="is_public" /> <h4>是否公开？</h4>
+							<button class="btn btn-danger btn-block" type="submit" id="submit_button">创建空间</button >
+					</form>
+			</div>
+			<div class="clear"></div>
+			</div>
+
+		</div>
+		<div class="footer">
+
+ <p>Copyright 2019-2020. All Rights Reserved. | made with by labSpace.</p>
+ </div>
+	</div>
+
+    <!-- Javascript -->
+        <script src="/static/js/jquery.min.js" ></script>
+        <script src="/static/lab/js/check_apply.js"></script>
+	</body>
+</html>

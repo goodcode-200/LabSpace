@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from user.utils import get_nickname
 
-def home(request):
-	return render(request,'home.html')
+def index(request):
+    context = {}
+    context["nickname"] = get_nickname(request)
+    return render(request, 'index.html',context)

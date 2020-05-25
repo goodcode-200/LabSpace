@@ -13,5 +13,8 @@
 # 媒体文件
 labSpace/media/
 
+# 配置文件，涉及敏感信息
+labSpace/labSpace/settings.py
+
 
 

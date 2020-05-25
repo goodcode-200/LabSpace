@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>实验室空间</title>
+
+<!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+
+<!-- font awesome -->
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="/static/lab/assets/bootstrap/css/bootstrap.min.css" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="/static/lab/assets/animate/animate.css" />
+<link rel="stylesheet" href="/static/lab/assets/animate/set.css" />
+
+<!-- gallery -->
+<link rel="stylesheet" href="/static/lab/assets/gallery/blueimp-gallery.min.css">
+
+<!-- favicon --><!--
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+-->
+
+
+<link rel="stylesheet" href="/static/lab/assets/style.css">
+
+</head>
+
+<body>
+<div class="topbar animated fadeInLeftBig"></div>
+
+<!-- Header Starts -->
+<div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
+          <div class="container">
+            <div class="navbar-header">
+              <!-- Logo Starts -->
+              <a class="navbar-brand" href="####"><img src="/static/lab/images/lll.png" alt="logo"></a>
+              <!-- #Logo Ends -->
+
+
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+            </div>
+
+
+            <!-- Nav Starts -->
+            <div class="navbar-collapse  collapse">
+              <ul class="nav navbar-nav navbar-right scroll">
+                 <li ><a id="apply_link" href="####to be or not to be,it's a big problem!">申请实验室空间</a></li>
+              </ul>
+            </div>
+            <!-- #Nav Ends -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+<!-- #Header Starts -->
+
+
+
+
+
+
+
+<!-- works -->
+<div id="works"  class=" clearfix grid">
+    {% for item in labs %}
+        <figure class="effect-oscar  wowload fadeIn">
+        <img src="/static/lab/images/portfolio/{{ item.img }}.jpg" alt="img01"/>
+        <figcaption>
+            <h2>
+                {% if item.is_public %}
+                    [公开]
+                {% else %}
+                    [私有]
+                {% endif %}
+                {{ item.lab_name }}</h2>
+            <p>{{ item.introduce | truncatewords:"30"}}<br>
+            <a href="####想进入看看吗？" title="1" data-gallery id="{{ item.address }}">进入</a>
+            <a href="#####apply" title="1" data-gallery id="123{{ item.address }}">申请加入</a></p>
+        </figcaption>
+        <script>
+            var temp = document.getElementById("{{item.address}}");
+            var apply = document.getElementById("123{{item.address}}");
+            temp.onclick = function(){
+                window.location.href="/lab/spac/{{item.address}}";
+            };
+            apply.onclick = function(){
+                window.location.href="/lab/apl/{{item.address}}";
+            }
+        </script>
+    </figure>
+    {% empty %}
+        <h1>暂时无人注册呢</h1>
+    {% endfor %}
+</div>
+<!-- works -->
+
+
+
+
+
+
+<!-- Cirlce Starts -->
+<div id="about"  class="container spacer about">
+<h2 class="text-center wowload fadeInUp">LabSpace,实验室成员的集合,实验室的集合</h2>
+  <div class="row">
+  <div class="col-sm-6 wowload fadeInLeft">
+    <h4><i class="fa fa-paint-brush"></i> Design</h4>
+    <p>设计页面，注重与用户交互体验，从基础做起，从点滴做起</p>
+
+
+  </div>
+  <div class="col-sm-6 wowload fadeInRight">
+  <h4><i class="fa fa-code"></i> 前端 & 后端</h4>
+  <p>前端尽可能美观，后端尽可能高效</p>
+  </div>
+  </div>
+</div>
+<!-- #Cirlce Ends -->
+
+
+
+
+<!-- team -->
+<h3 class="text-center  wowload fadeInUp">Our team</h3>
+<p class="text-center  wowload fadeInLeft">赛格先生|卡奈小姐姐|贝蒂先生|阿美小哥|格贝尔大王</p>
+<!-- team -->
+
+</div>
+
+<!--Contact Starts-->
+<div id="contact" class="spacer">
+
+<div class="container contactform center">
+<h2 class="text-center  wowload fadeInUp">Get in touch to start your project</h2>
+  <div class="row wowload fadeInLeftBig">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Company">
+        <textarea rows="5" placeholder="Message"></textarea>
+        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> Send</button>
+      </div>
+  </div>
+
+
+
+</div>
+</div>
+<!--Contact Ends-->
+
+
+
+<!-- Footer Starts -->
+<div class="footer text-center spacer">
+<p class="wowload flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-flickr fa-2x"></i></a> </p>
+Copyright 2019-2020. All Rights Reserved. | made with by labSpace.
+</div>
+<!-- # Footer Ends -->
+<a href="#works" class="gototop "><i class="fa fa-angle-up  fa-3x"></i></a>
+
+
+
+
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title">Title</h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+</div>
+
+
+
+<!-- jquery -->
+<script src="/static/lab/assets/jquery.js"></script>
+
+<!-- wow script -->
+<script src="/static/lab/assets/wow/wow.min.js"></script>
+
+
+<!-- boostrap -->
+<script src="/static/lab/assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+
+<!-- jquery mobile -->
+<script src="/static/lab/assets/mobile/touchSwipe.min.js"></script>
+<script src="/static/lab/assets/respond/respond.js"></script>
+
+<!-- gallery -->
+<script src="/static/lab/assets/gallery/jquery.blueimp-gallery.min.js"></script>
+
+<!-- custom script -->
+<script src="/static/lab/assets/script.js"></script>
+<script>
+    var apply_link = document.getElementById("apply_link");
+    apply_link.onclick = function () {
+        window.location.href="/lab/apply";
+    };
+    var home = document.getElementsByClassName("navbar-brand");
+    home[0].onclick = function(){
+        window.location.href="/";
+    };
+</script>
+
+</body>
+</html>
