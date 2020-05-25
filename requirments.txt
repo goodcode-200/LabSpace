@@ -1,0 +1,4 @@
+# python3
+django == 1.9
+mysqlclient
+chain
